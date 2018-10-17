@@ -3,6 +3,7 @@
 import importlib
 import numpy as np
 import tensorflow as tf
+import os
 from config import CONFIG
 MODELS = importlib.import_module(
     '.'.join(('musegan', CONFIG['exp']['model'], 'models')))
