@@ -3,8 +3,8 @@
 import os.path
 import numpy as np
 import tensorflow as tf
-from musegan.utils import midi_io
-from musegan.utils import image_io
+from utils import midi_io
+from utils import image_io
 
 class Model(object):
     """Base class for models."""
