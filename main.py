@@ -4,6 +4,7 @@ import importlib
 import numpy as np
 import tensorflow as tf
 import os
+
 from config import CONFIG
 MODELS = importlib.import_module(
     '.'.join(('musegan', CONFIG['exp']['model'], 'models')))
@@ -19,6 +20,7 @@ def load_data():
 
     # Load data from hard disk
     elif CONFIG['data']['training_data_location'] == 'hd':
+        x_train = np.load(CONFIG['data']['training_data'], encoding='latin1')
         if os.path.isabs(CONFIG['data']['training_data']):
             x_train = np.load(CONFIG['data']['training_data'])
         else:
