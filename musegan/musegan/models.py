@@ -96,6 +96,14 @@ class GAN(Model):
         self.save_statistics()
         self.print_summary()
         self.save_summary()
+        self.download_checkpoints_from_colab()
+
+    def download_checkpoints_from_colab(self):
+        from google.colab import files
+        import os
+        for root, dirs, filenames in os.walk("checkpoints", topdown=False):
+        for filename in filenames:
+            files.download(os.path.join(root, filename))
 
     def train(self, x_train, train_config):
         """Train the model."""
