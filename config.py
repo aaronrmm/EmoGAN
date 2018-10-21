@@ -278,7 +278,7 @@ CONFIG['model'] = {
     'tonal_matrix_coefficient': (1., 1., .5),
 
     # Directories
-    'checkpoint_dir': None,
+    'checkpoint_dir': 'checkpoints/',
     'sample_dir': None,
     'eval_dir': None,
     'log_dir': None,
