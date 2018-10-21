@@ -136,6 +136,14 @@ class Model(object):
                                     self.name + '.model')
         print('[*] Saving checkpoint...')
         self.saver.save(self.sess, filepath, self.global_step)
+        self.download_checkpoints_from_colab(self)
+
+    def download_checkpoints_from_colab(self):
+        from google.colab import files
+        import os
+        for root, dirs, filenames in os.walk("checkpoints", topdown=False):
+            for filename in filenames:
+                files.download(os.path.join(root, filename))
 
     def load(self, filepath):
         """Load the model from the latest checkpoint in a directory."""
