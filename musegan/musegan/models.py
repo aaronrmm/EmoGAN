@@ -102,8 +102,8 @@ class GAN(Model):
         from google.colab import files
         import os
         for root, dirs, filenames in os.walk("checkpoints", topdown=False):
-        for filename in filenames:
-            files.download(os.path.join(root, filename))
+            for filename in filenames:
+                files.download(os.path.join(root, filename))
 
     def train(self, x_train, train_config):
         """Train the model."""
