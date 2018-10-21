@@ -136,7 +136,7 @@ class Model(object):
                                     self.name + '.model')
         print('[*] Saving checkpoint...')
         self.saver.save(self.sess, filepath, self.global_step)
-        self.download_checkpoints_from_colab(self)
+        self.download_checkpoints_from_colab()
 
     def download_checkpoints_from_colab(self):
         from google.colab import files
