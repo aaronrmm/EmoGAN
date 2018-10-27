@@ -139,10 +139,7 @@ class Model(object):
         self.download_checkpoints_from_colab()
 
     def download_checkpoints_from_colab(self):
-        from google.colab import files
-        import os
-        for filename in os.listdir("checkpoints"):
-            files.download("checkpoints/"+str(filename))
+        print("unimplemented")
 
     def load(self, filepath):
         """Load the model from the latest checkpoint in a directory."""

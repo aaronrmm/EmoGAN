@@ -67,7 +67,7 @@ SETUP = {
     # Use a preset network architecture for the discriminator or set to None
     # and setup `CONFIG['model']['net_d']` to define the network architecture.
 
-    'pretrained_dir': None,
+    'pretrained_dir': 'pretrained',
     # The directory containing the pretrained model. None to retrain the
     # model from scratch.
 
@@ -121,7 +121,7 @@ CONFIG['tensorflow'].gpu_options.allow_growth = True
 CONFIG['exp'] = {
     'model': None,
     'exp_name': None,
-    'pretrained_dir': None,
+    'pretrained_dir': 'lastfm_alternative_g_composer_d_proposed',
     'two_stage_training': None, # For BinaryMuseGAN only
     'first_stage_dir': None, # For BinaryMuseGAN only
 }
@@ -279,10 +279,10 @@ CONFIG['model'] = {
 
     # Directories
     'checkpoint_dir': 'checkpoints/',
-    'sample_dir': None,
-    'eval_dir': None,
-    'log_dir': None,
-    'src_dir': None,
+    'sample_dir': 'samples/',
+    'eval_dir': 'evals/',
+    'log_dir': 'logs/',
+    'src_dir': 'src/',
 }
 
 if SETUP['model'] == 'bmusegan' and CONFIG['model']['joint_training'] is None:
