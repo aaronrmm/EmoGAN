@@ -121,7 +121,7 @@ CONFIG['tensorflow'].gpu_options.allow_growth = True
 CONFIG['exp'] = {
     'model': None,
     'exp_name': None,
-    'pretrained_dir': 'lastfm_alternative_g_composer_d_proposed',
+    'pretrained_dir': '/home/salu133445/NAS/salu133445/git/musegan/exp/musegan/lastfm_alternative_g_composer_d_proposed/checkpoints/lastfm_alternative_g_composer_d_proposed',
     'two_stage_training': None, # For BinaryMuseGAN only
     'first_stage_dir': None, # For BinaryMuseGAN only
 }
