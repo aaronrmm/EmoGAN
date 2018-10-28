@@ -150,8 +150,12 @@ class Model(object):
         """Load the model from the latest checkpoint in a directory."""
         if checkpoint_dir is None:
             checkpoint_dir = self.config['checkpoint_dir']
-        print('[*] Loading checkpoint from '+str(checkpoint_dir))
-        checkpoint_path = checkpoint_dir+'/GAN.model-55470'# tf.train.latest_checkpoint(checkpoint_dir)
+        print('[*] Loading checkpoint...')
+        with open(os.path.join(checkpoint_dir, 'checkpoint')) as f:
+            checkpoint_name = os.path.basename(
+                f.readline().split()[1].strip('"'))
+        checkpoint_path = os.path.realpath(
+            os.path.join(checkpoint_dir, checkpoint_name))
         if checkpoint_path is None:
             raise ValueError("No latest checkpoint was found in dir "+str(checkpoint_dir))
         self.saver.restore(self.sess, checkpoint_path)
