@@ -82,3 +82,15 @@ def save_midi(filepath, phrases, config):
 
     write_midi(filepath, pianorolls, config['programs'], config['is_drums'],
                tempo=config['tempo'])
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('--in_file', type=str)
+    parser.add_argument('--out_file', type=str)
+    parser.add_argument('--config_file', type=str)
+
+    args = parser.parse_args()
+    save_midi(args.in_file, args.out_file, args.config_path)
