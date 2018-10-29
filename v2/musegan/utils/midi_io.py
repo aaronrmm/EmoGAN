@@ -98,4 +98,4 @@ if __name__ == "__main__":
     parser.add_argument('--config_file', type=str)
 
     args = parser.parse_args()
-    save_midi(args.in_file, args.out_file, args.config_file)
+    save_midi(args.out_file, args.in_file, args.config_file)
