@@ -33,9 +33,13 @@ def write_midi(filepath, pianorolls, program_nums=None, is_drums=None,
         is_drums = [is_drums]
 
     if pianorolls.shape[2] != len(program_nums):
+        print("`pianorolls` and `program_nums` must have the same"
+                         "length")
         raise ValueError("`pianorolls` and `program_nums` must have the same"
                          "length")
     if pianorolls.shape[2] != len(is_drums):
+        print("`pianorolls` and `is_drums` must have the same"
+                         "length")
         raise ValueError("`pianorolls` and `is_drums` must have the same"
                          "length")
     if program_nums is None:
@@ -69,6 +73,7 @@ def save_midi(filepath, phrases, config):
         Default to 0.
     """
     if not np.issubdtype(phrases.dtype, np.bool_):
+        print("Support only binary-valued piano-rolls")
         raise TypeError("Support only binary-valued piano-rolls")
 
     reshaped = phrases.reshape(-1, phrases.shape[1] * phrases.shape[2],
@@ -82,3 +87,15 @@ def save_midi(filepath, phrases, config):
 
     write_midi(filepath, pianorolls, config['programs'], config['is_drums'],
                tempo=config['tempo'])
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('--in_file', type=str)
+    parser.add_argument('--out_file', type=str)
+    parser.add_argument('--config_file', type=str)
+
+    args = parser.parse_args()
+    save_midi(args.out_file, args.in_file, args.config_file)
