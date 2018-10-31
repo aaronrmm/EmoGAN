@@ -7,7 +7,7 @@ import scipy.misc
 import numpy as np
 import tensorflow as tf
 from pprint import pprint
-import SharedArray as sa
+#import SharedArray as sa
 import pickle
 
 from musegan.core import *

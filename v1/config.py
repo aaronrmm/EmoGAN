@@ -8,7 +8,7 @@ from __future__ import print_function
 import numpy as np
 from shutil import copyfile
 import os
-import SharedArray as sa
+#import SharedArray as sa
 import tensorflow as tf
 import glob
 

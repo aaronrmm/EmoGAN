@@ -7,7 +7,7 @@ import scipy.misc
 import numpy as np
 import tensorflow as tf
 from pprint import pprint
-import SharedArray as sa
+#import SharedArray as sa
 
 from musegan.core import *
 from musegan.components import *
@@ -36,7 +36,7 @@ if __name__ == '__main__':
         t_config.exp_name = 'exps/temporal_hybrid'
         model = TemporalHybrid(TemporalHybridConfig)
         input_data = InputDataTemporalHybrid(model)
-        input_data.add_data_sa(path_x_train_phr, 'train')
+        input_data.add_data(path_x_train_phr, 'train')
 
         musegan = MuseGAN(sess, t_config, model)
         musegan.train(input_data)
