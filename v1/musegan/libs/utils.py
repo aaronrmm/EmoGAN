@@ -63,7 +63,9 @@ def to_image_np(bars):
                          [0., 0., 1.],
                          [1., .5, 0.],
                          [0., .5, 1.]])
-    recolored_bars = np.matmul(bars.reshape(-1, 5), colormap).reshape((bars.shape[0], bars.shape[1], bars.shape[2], 3))
+    print(str(bars.shape))
+    recolored_bars = np.matmul(bars.reshape(-1, 5), colormap)
+    recolored_bars.reshape((bars.shape[0], bars.shape[1], bars.shape[2], 3))
     # recolored_bars = np.zeros((bars.shape[0], bars.shape[1], bars.shape[2], 3))
     # for track_idx in range(bars.shape[-1]):
     #     recolored_bars = recolored_bars + bars[..., track_idx][:, :, :, None]*colormap[track_idx][None, None, None, :]
