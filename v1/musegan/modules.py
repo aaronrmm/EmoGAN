@@ -127,7 +127,7 @@ class BarEncoder(object):
         self.name = name
         self.is_bn = is_bn
 
-    def __call__(self, in_tensor, reuse=False):
+    def __call__(self, in_tensor, reuse=True):
         with tf.variable_scope(self.name, reuse=reuse):
             h0 = lrelu(batch_norm(conv2d(in_tensor, 16, kernels=[1, 12], strides=[1, 12], name='h0'), self.is_bn))
             h1 = lrelu(batch_norm(conv2d(h0, 16, kernels=[1, 7], strides=[1, 7], name='h1'), self.is_bn))
