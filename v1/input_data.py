@@ -13,8 +13,8 @@ class InputData:
         self.x = dict()
 
     def add_data(self, path_new, key='train'):
-        self.x[key] = np.load(path_new)
-        print('data size:', self.x[key].shape)
+        self.x[key] = path_new#np.load(path_new) #np.load(path_new, encoding='latin1')#
+        #self.x[key] = tiled.reshape(25,384, 84, 5)
 
     def add_data_sa(self, path_new, key='train'):
         self.x[key] = sa.attach(path_new)
@@ -22,6 +22,8 @@ class InputData:
 
     def add_data_np(self, data, key='train'):
         self.x[key] = data
+        print(data.shape)
+        tiled = np.tile(self.x[key], (1,2,1,1,1))
         print('data size:', self.x[key].shape)
 
     def get_batch_num(self, key='train'):
@@ -33,7 +35,7 @@ class InputData:
         return self.x[key][st:st+data_size] * 2. - 1.
 
     def get_rand_smaples(self, sample_size=64, key='train'):
-        random_idx = np.random.choice(len(self.x[key]), sample_size, replace=False)
+        random_idx = np.random.choice(len(self.x[key][1]), 5, replace=False)
         return self.x[key][random_idx]*2. - 1.
 
     def gen_feed_dict(self, idx=0, data_size=None, key='train', z=None):
