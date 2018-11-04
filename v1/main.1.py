@@ -34,38 +34,42 @@ if __name__ == '__main__':
                         help='path to directory containing checkpoint files')
     parser.add_argument('--condition_track', type=str,
                         help='path to conditioning numpy file')
+    parser.add_argument('--training_path', type=str,
+                        help='path to training npz file')
 
     args = parser.parse_args()
-    training_path =  'C://Users//Aaron//Desktop//school//generative_methods//EmoGAN//train_x_lpd_5_phr.npz' # (50266, 384, 84, 5)
+    training_path =  os.path.join(os.getcwd(),'train_x_lpd_5_phr.npz') # (50266, 384, 84, 5)
+    condition_track = os.path.join(os.getcwd(),'test_calm.npy')
+    if args.training_path is not None:
+        training_path = args.training_path
+    if args.condition_track is not None:
+        condition_track = args.condition_track
+
     training_data = np.load(training_path)
     nonzero = training_data['nonzero']
-    shape = training_data['shape']
-    from pprint import pprint
-    pprint(vars(training_data))
-    f = training_data.f
-    #training_data = np.fromfile(training_path, dtype=np.float32)
-    #print("training data shape")
-   # print(str(training_data.shape))
+    print("starting shape "+str(nonzero.shape))#(5, 156149621)
+    nonzero = nonzero.reshape(-1, 4, 48, 84, 5)
+    print("reshaped shape "+str(nonzero.shape))
+    nonzero = np.repeat(nonzero, 2, axis=2)
+    shape = training_data['shape']#[102378, 4, 48, 84, 5] 
+    print("repeated shape "+str(nonzero.shape))
+
     with tf.Session(config=config) as sess:
 
         t_config.exp_name = 'exps/nowbar_hybrid'
         model = NowbarHybrid(NowBarHybridConfig)
         input_data = InputDataNowBarHybrid(model)
-        #input_data.add_data(path_x_train_phr, 'train')
-        condition_track = 'C://Users//Aaron//Desktop//school//test_calm.npy'
-        if args.condition_track is not None:
-            condition_track = args.condition_track
-        print("adding input data")
+        print("adding training data "+str(nonzero.shape))
+        input_data.add_data_np(nonzero, 'train')
         input_data.add_data(condition_track, key='test')
         musegan = MuseGAN(sess, t_config, model)
-        input_data.add_data_np(nonzero, 'train')
         musegan.train(input_data)
-        #musegan.dir_ckpt = 'C://Users//Aaron//Desktop//school//generative_methods//EmoGAN//lastfm_alternative_g_composer_d_proposed'
+        #musegan.dir_ckpt = 'pregen'
         #if args.dir_ckpt is not None:
         #    musegan.dir_ckpt = args.dir_ckpt
         #musegan.load(musegan.dir_ckpt)
         print("gen test")
         result, eval_result = musegan.gen_test(input_data, is_eval=True)
 
-        save_midis(result, 'C://Users//Aaron//Desktop//myy.midi')
+        save_midis(result, 'myy.midi')
 
