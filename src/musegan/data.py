@@ -14,6 +14,7 @@ def load_data_from_npy(filename):
 def load_data_from_npz(filename):
     """Load and return the training data from a npz file (sparse format)."""
     with np.load(filename) as f:
+        f['shape'][0]=1024
         data = np.zeros(f['shape'], np.bool_)
         data[[x for x in f['nonzero']]] = True
     return data
