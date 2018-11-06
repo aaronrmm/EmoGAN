@@ -211,7 +211,7 @@ We provide several shell scripts for easy managing the experiments. (See
    ```
 
    You can also download the pretrained models manually
-   ([pretrained_models.tar.gz](https://docs.google.com/uc?export=download&id=17qJ6jDElLMukwQBZjDEnJctpkyDsd09g)).
+   ([pretrained_models.tar.gz](https://docs.google.com/uc?export=download&id=1mZCq8o87Zjf2sL1KMcQ1dO7JbCDSRgoX)).
 
 2. You can either perform inference from a trained model:
 
@@ -247,7 +247,7 @@ Retrieval Conference_ (ISMIR), 2018.<br>
 [[website](https://salu133445.github.io/bmusegan)]
 [[arxiv](https://arxiv.org/abs/1804.09399)]
 [[paper](https://salu133445.github.io/bmusegan/pdf/bmusegan-ismir2018-paper.pdf)]
-[[slides(long)](https://salu133445.github.io/bmusegan/pdf/bmusegan-tmacw2018-slides.pdf)]
+[[slides(long)](https://salu133445.github.io/bmusegan/pdf/bmusegan-tmac2018-slides.pdf)]
 [[slides(short)](https://salu133445.github.io/bmusegan/pdf/bmusegan-ismir2018-slides.pdf)]
 [[poster](https://salu133445.github.io/bmusegan/pdf/bmusegan-ismir2018-poster.pdf)]
 [[code](https://github.com/salu133445/bmusegan)]
