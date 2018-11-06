@@ -5,7 +5,7 @@ from __future__ import print_function
 ## 193 settings
 import warnings
 import matplotlib
-import SharedArray as sa
+#import SharedArray as sa
 import tensorflow as tf
 
 ## notebook
