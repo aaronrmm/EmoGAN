@@ -21,6 +21,10 @@ def load_data_from_npz(filename):
 
 def load_data(data_source, data_filename):
     """Load and return the training data."""
+    print("loading data from ")
+    import os
+    import os.path
+    print(str(os.path.join(os.getcwd(),data_filename)))
     if data_source == 'sa':
         import SharedArray as sa
         return sa.attach(data_filename)
